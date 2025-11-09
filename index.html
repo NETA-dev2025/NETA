@@ -408,16 +408,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#home">Home</a>
+                        <a class="nav-link active" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#datasets">Datasets</a>
+                        <a class="nav-link" href="datasets.html">Datasets</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#features">Features</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#documentation">Documentation</a>
+                        <a class="nav-link" href="docs/user-guide.html">Documentation</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://github.com/NETA-dev2025/NETA" target="_blank">
@@ -442,10 +442,10 @@
                         of neuroendocrine tumors across diverse tissue origins and disease states.
                     </p>
                     <div class="mt-4">
-                        <a href="#datasets" class="btn btn-primary btn-lg me-3">
+                        <a href="datasets.html" class="btn btn-primary btn-lg me-3">
                             <i class="bi bi-database"></i> Explore Datasets
                         </a>
-                        <a href="#documentation" class="btn btn-outline btn-lg">
+                        <a href="docs/user-guide.html" class="btn btn-outline btn-lg">
                             <i class="bi bi-book"></i> Documentation
                         </a>
                     </div>
@@ -778,22 +778,19 @@
         function animateValue(id, start, end, duration) {
             const obj = document.getElementById(id);
             const range = end - start;
-            const increment = end > start ? 1 : -1;
-            const stepTime = Math.abs(Math.floor(duration / range));
+            const increment = Math.max(1, Math.floor(range / 100));
             let current = start;
 
             const timer = setInterval(() => {
                 current += increment;
-                if (end > 10000) {
-                    obj.textContent = (current / 1000).toFixed(0) + 'K';
-                } else {
-                    obj.textContent = current;
-                }
-
-                if (current === end) {
+                if (current >= end) {
+                    current = end;
                     clearInterval(timer);
                 }
-            }, stepTime);
+
+                // Format with commas for readability
+                obj.textContent = current.toLocaleString();
+            }, duration / 100);
         }
 
         // Load dataset statistics
@@ -813,8 +810,8 @@
                 console.error('Error loading statistics:', error);
                 // Set default values
                 document.getElementById('total-datasets').textContent = '75';
-                document.getElementById('total-samples').textContent = '2.5K';
-                document.getElementById('total-genes').textContent = '22K';
+                document.getElementById('total-samples').textContent = '2,500';
+                document.getElementById('total-genes').textContent = '22,593';
             }
         }
 
