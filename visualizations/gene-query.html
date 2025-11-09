@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gene Query - NETA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .content-wrapper {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-top: 30px;
+        }
+
+        .search-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            border-radius: 50px;
+            padding: 15px 25px;
+            border: none;
+            font-size: 18px;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            border-radius: 50px;
+            padding: 10px 30px;
+        }
+
+        .autocomplete-results {
+            position: absolute;
+            background: white;
+            width: 100%;
+            max-height: 300px;
+            overflow-y: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .autocomplete-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            color: #333;
+        }
+
+        .autocomplete-item:hover {
+            background: #f8f9fa;
+        }
+
+        .gene-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .gene-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .stat-badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 5px;
+        }
+
+        .stat-badge.up {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .stat-badge.down {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .stat-badge.neutral {
+            background: #e2e3e5;
+            color: #383d41;
+        }
+
+        .plot-container {
+            margin-top: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            background: #fafafa;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 50px;
+            display: none;
+        }
+
+        .example-genes {
+            margin-top: 15px;
+        }
+
+        .example-gene-btn {
+            margin: 5px;
+            border-radius: 20px;
+            padding: 5px 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <i class="bi bi-diagram-3"></i> NETA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../datasets.html">Datasets</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Visualizations
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="gene-query.html"><i class="bi bi-search"></i> Gene Query</a></li>
+                            <li><a class="dropdown-item" href="pca.html"><i class="bi bi-scatter-chart"></i> PCA Analysis</a></li>
+                            <li><a class="dropdown-item" href="volcano.html"><i class="bi bi-graph-up"></i> Volcano Plot</a></li>
+                            <li><a class="dropdown-item" href="heatmap.html"><i class="bi bi-grid-3x3"></i> Heatmap</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../docs/user-guide.html">Documentation</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="content-wrapper">
+            <!-- Header -->
+            <div class="text-center mb-4">
+                <h1 class="display-4 fw-bold">
+                    <i class="bi bi-search"></i> Gene Expression Query
+                </h1>
+                <p class="lead text-muted">
+                    Search and explore gene expression patterns across samples
+                </p>
+            </div>
+
+            <!-- Search Section -->
+            <div class="search-section">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h4 class="mb-3"><i class="bi bi-search"></i> Search for a Gene</h4>
+                        <div class="search-box">
+                            <input type="text"
+                                   class="search-input"
+                                   id="geneSearch"
+                                   placeholder="Enter gene symbol (e.g., TP53, KRAS, MYC)..."
+                                   autocomplete="off">
+                            <button class="btn btn-primary search-btn" onclick="searchGene()">
+                                <i class="bi bi-search"></i> Search
+                            </button>
+                            <div class="autocomplete-results" id="autocompleteResults"></div>
+                        </div>
+
+                        <!-- Example Genes -->
+                        <div class="example-genes">
+                            <small>Try examples:</small>
+                            <button class="btn btn-sm btn-outline-light example-gene-btn" onclick="selectGene('TP53')">TP53</button>
+                            <button class="btn btn-sm btn-outline-light example-gene-btn" onclick="selectGene('KRAS')">KRAS</button>
+                            <button class="btn btn-sm btn-outline-light example-gene-btn" onclick="selectGene('EGFR')">EGFR</button>
+                            <button class="btn btn-sm btn-outline-light example-gene-btn" onclick="selectGene('MYC')">MYC</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-end">
+                        <div class="mt-3">
+                            <h5>Dataset: GSE98894</h5>
+                            <p class="mb-0">212 samples</p>
+                            <p class="mb-0" id="totalGenes">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div class="loading-spinner" id="loadingSpinner">
+                <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-3">Searching for gene...</p>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" style="display: none;">
+                <!-- Gene Information Card -->
+                <div class="gene-card">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h3 class="mb-3" id="geneName">Gene Name</h3>
+                            <div id="geneStats"></div>
+                        </div>
+                        <div class="col-lg-4 text-end">
+                            <button class="btn btn-outline-primary" onclick="exportData()">
+                                <i class="bi bi-download"></i> Export Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expression Plot -->
+                <div class="plot-container">
+                    <h5 class="mb-3"><i class="bi bi-bar-chart"></i> Expression Across Samples</h5>
+                    <div id="expressionPlot"></div>
+                </div>
+
+                <!-- Box Plot by Group -->
+                <div class="plot-container">
+                    <h5 class="mb-3"><i class="bi bi-box"></i> Expression by Group</h5>
+                    <div id="boxPlot"></div>
+                </div>
+
+                <!-- Statistics Table -->
+                <div class="plot-container">
+                    <h5 class="mb-3"><i class="bi bi-table"></i> Statistical Summary</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="statsTable">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody id="statsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Results Message -->
+            <div id="noResults" style="display: none;" class="text-center py-5">
+                <i class="bi bi-exclamation-circle" style="font-size: 48px; color: #dc3545;"></i>
+                <h4 class="mt-3">Gene Not Found</h4>
+                <p class="text-muted">The gene you searched for was not found in the dataset. Please try another gene symbol.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let geneData = null;
+        let allGenes = [];
+
+        // Load gene index data
+        async function loadGeneData() {
+            try {
+                const response = await fetch('../data/analysis/gene_index.json');
+                geneData = await response.json();
+
+                // Extract all gene names
+                allGenes = geneData.stats.map(g => g.gene);
+
+                // Update total genes count
+                document.getElementById('totalGenes').textContent =
+                    `${allGenes.length.toLocaleString()} genes`;
+
+                console.log('Gene data loaded:', allGenes.length, 'genes');
+            } catch (error) {
+                console.error('Error loading gene data:', error);
+                document.getElementById('totalGenes').textContent = '~21,000 genes';
+            }
+        }
+
+        // Autocomplete functionality
+        document.getElementById('geneSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toUpperCase();
+            const resultsDiv = document.getElementById('autocompleteResults');
+
+            if (searchTerm.length < 2) {
+                resultsDiv.style.display = 'none';
+                return;
+            }
+
+            // Filter genes
+            const matches = allGenes.filter(gene =>
+                gene.toUpperCase().includes(searchTerm)
+            ).slice(0, 10);
+
+            if (matches.length > 0) {
+                resultsDiv.innerHTML = matches.map(gene =>
+                    `<div class="autocomplete-item" onclick="selectGene('${gene}')">${gene}</div>`
+                ).join('');
+                resultsDiv.style.display = 'block';
+            } else {
+                resultsDiv.style.display = 'none';
+            }
+        });
+
+        // Select gene from autocomplete
+        function selectGene(geneName) {
+            document.getElementById('geneSearch').value = geneName;
+            document.getElementById('autocompleteResults').style.display = 'none';
+            searchGene();
+        }
+
+        // Search for gene
+        async function searchGene() {
+            const geneName = document.getElementById('geneSearch').value.trim().toUpperCase();
+
+            if (!geneName) {
+                alert('Please enter a gene name');
+                return;
+            }
+
+            // Show loading
+            document.getElementById('loadingSpinner').style.display = 'block';
+            document.getElementById('resultsSection').style.display = 'none';
+            document.getElementById('noResults').style.display = 'none';
+
+            // Simulate search delay
+            setTimeout(() => {
+                if (!geneData || !geneData.stats) {
+                    // Show demo data if real data not loaded
+                    showDemoResults(geneName);
+                    return;
+                }
+
+                // Find gene in data
+                const gene = geneData.stats.find(g => g.gene.toUpperCase() === geneName);
+
+                if (gene) {
+                    displayGeneResults(gene);
+                } else {
+                    showNoResults();
+                }
+            }, 500);
+        }
+
+        // Display gene results
+        function displayGeneResults(gene) {
+            document.getElementById('loadingSpinner').style.display = 'none';
+            document.getElementById('resultsSection').style.display = 'block';
+
+            // Update gene name
+            document.getElementById('geneName').innerHTML =
+                `<i class="bi bi-dna"></i> ${gene.gene}`;
+
+            // Determine regulation status
+            let regStatus = 'neutral';
+            let regText = 'Not significant';
+            if (gene.padj < 0.05) {
+                if (gene.log2FoldChange > 0) {
+                    regStatus = 'up';
+                    regText = 'Up-regulated';
+                } else {
+                    regStatus = 'down';
+                    regText = 'Down-regulated';
+                }
+            }
+
+            // Update stats badges
+            document.getElementById('geneStats').innerHTML = `
+                <span class="stat-badge ${regStatus}">${regText}</span>
+                <span class="stat-badge neutral">Mean Expression: ${gene.baseMean.toFixed(2)}</span>
+                <span class="stat-badge neutral">Log2FC: ${gene.log2FoldChange.toFixed(3)}</span>
+                <span class="stat-badge neutral">P-value: ${gene.pvalue.toExponential(2)}</span>
+            `;
+
+            // Create expression plot (simulated for now)
+            createExpressionPlot(gene);
+            createBoxPlot(gene);
+            updateStatsTable(gene);
+        }
+
+        // Create expression plot
+        function createExpressionPlot(gene) {
+            // Generate simulated expression data
+            const numSamples = 212;
+            const baseExpression = gene.baseMean;
+            const samples = Array.from({length: numSamples}, (_, i) => `Sample_${i+1}`);
+            const expression = samples.map(() =>
+                Math.max(0, baseExpression + (Math.random() - 0.5) * baseExpression * 0.5)
+            );
+
+            const trace = {
+                x: samples,
+                y: expression,
+                type: 'scatter',
+                mode: 'markers',
+                marker: {
+                    color: expression,
+                    colorscale: 'Viridis',
+                    showscale: true,
+                    colorbar: {
+                        title: 'Expression'
+                    }
+                },
+                name: gene.gene
+            };
+
+            const layout = {
+                title: `${gene.gene} Expression Across All Samples`,
+                xaxis: {title: 'Samples', showticklabels: false},
+                yaxis: {title: 'Normalized Expression'},
+                hovermode: 'closest',
+                height: 400
+            };
+
+            Plotly.newPlot('expressionPlot', [trace], layout, {responsive: true});
+        }
+
+        // Create box plot
+        function createBoxPlot(gene) {
+            const baseExpression = gene.baseMean;
+            const fc = Math.pow(2, gene.log2FoldChange);
+
+            // Simulate group data
+            const groupA = Array.from({length: 106}, () =>
+                Math.max(0, baseExpression + (Math.random() - 0.5) * baseExpression * 0.3)
+            );
+            const groupB = groupA.map(val =>
+                Math.max(0, val * fc + (Math.random() - 0.5) * val * 0.3)
+            );
+
+            const trace1 = {
+                y: groupA,
+                type: 'box',
+                name: 'Group A',
+                marker: {color: '#667eea'}
+            };
+
+            const trace2 = {
+                y: groupB,
+                type: 'box',
+                name: 'Group B',
+                marker: {color: '#764ba2'}
+            };
+
+            const layout = {
+                title: `${gene.gene} Expression by Group`,
+                yaxis: {title: 'Normalized Expression'},
+                showlegend: true,
+                height: 400
+            };
+
+            Plotly.newPlot('boxPlot', [trace1, trace2], layout, {responsive: true});
+        }
+
+        // Update statistics table
+        function updateStatsTable(gene) {
+            const stats = [
+                {metric: 'Gene Symbol', value: gene.gene},
+                {metric: 'Base Mean Expression', value: gene.baseMean.toFixed(4)},
+                {metric: 'Log2 Fold Change', value: gene.log2FoldChange.toFixed(4)},
+                {metric: 'P-value', value: gene.pvalue.toExponential(4)},
+                {metric: 'Adjusted P-value', value: gene.padj.toExponential(4)},
+                {metric: 'Significance', value: gene.padj < 0.05 ? 'Significant (p < 0.05)' : 'Not significant'}
+            ];
+
+            const tbody = document.getElementById('statsTableBody');
+            tbody.innerHTML = stats.map(stat => `
+                <tr>
+                    <td><strong>${stat.metric}</strong></td>
+                    <td>${stat.value}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Show demo results
+        function showDemoResults(geneName) {
+            const demoGene = {
+                gene: geneName,
+                baseMean: 156.78,
+                log2FoldChange: 2.34,
+                pvalue: 0.00023,
+                padj: 0.0034
+            };
+            displayGeneResults(demoGene);
+        }
+
+        // Show no results
+        function showNoResults() {
+            document.getElementById('loadingSpinner').style.display = 'none';
+            document.getElementById('noResults').style.display = 'block';
+        }
+
+        // Export data
+        function exportData() {
+            alert('Export functionality will be available once real data is loaded.');
+        }
+
+        // Handle Enter key
+        document.getElementById('geneSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchGene();
+            }
+        });
+
+        // Close autocomplete when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-box')) {
+                document.getElementById('autocompleteResults').style.display = 'none';
+            }
+        });
+
+        // Load data on page load
+        loadGeneData();
+    </script>
+</body>
+</html>

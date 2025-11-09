@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volcano Plot - NETA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .content-wrapper {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .plot-container {
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            background: #fafafa;
+        }
+
+        .controls-panel {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .control-group {
+            margin-bottom: 15px;
+        }
+
+        .control-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .stat-box {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 10px 0;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .stat-value.up {
+            color: #dc3545;
+        }
+
+        .stat-value.down {
+            color: #0d6efd;
+        }
+
+        .stat-value.ns {
+            color: #6c757d;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .legend-box {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+            margin-right: 8px;
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .threshold-line {
+            border-top: 2px dashed #999;
+            margin: 10px 0;
+            padding: 5px 0;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <h4 class="mt-3">Loading Differential Expression Data...</h4>
+            <p class="text-muted">Analyzing ~21,000 genes</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <i class="bi bi-diagram-3"></i> NETA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../datasets.html">Datasets</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Visualizations
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="gene-query.html"><i class="bi bi-search"></i> Gene Query</a></li>
+                            <li><a class="dropdown-item" href="pca.html"><i class="bi bi-scatter-chart"></i> PCA Analysis</a></li>
+                            <li><a class="dropdown-item active" href="volcano.html"><i class="bi bi-graph-up"></i> Volcano Plot</a></li>
+                            <li><a class="dropdown-item" href="heatmap.html"><i class="bi bi-grid-3x3"></i> Heatmap</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../docs/user-guide.html">Documentation</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="content-wrapper">
+            <!-- Header -->
+            <div class="text-center mb-4">
+                <h1 class="display-4 fw-bold">
+                    <i class="bi bi-graph-up"></i> Volcano Plot
+                </h1>
+                <p class="lead text-muted">
+                    Visualize differential gene expression: magnitude vs. significance
+                </p>
+            </div>
+
+            <!-- Info Card -->
+            <div class="info-card">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h4><i class="bi bi-info-circle"></i> About Volcano Plots</h4>
+                        <p class="mb-0">
+                            Volcano plots display differential expression results, with log2 fold change
+                            on the x-axis and -log10(p-value) on the y-axis. Genes in the upper corners
+                            are both highly significant and show large expression changes.
+                        </p>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="text-center">
+                            <h5 class="mb-2">Dataset: GSE98894</h5>
+                            <p class="mb-0">Group B vs Group A</p>
+                            <small>DESeq2 Analysis</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="stat-box">
+                        <div class="stat-value up" id="upCount">--</div>
+                        <div class="stat-label">Up-regulated</div>
+                        <small class="text-muted">log2FC &gt; 1, padj &lt; 0.05</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-box">
+                        <div class="stat-value down" id="downCount">--</div>
+                        <div class="stat-label">Down-regulated</div>
+                        <small class="text-muted">log2FC &lt; -1, padj &lt; 0.05</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-box">
+                        <div class="stat-value ns" id="nsCount">--</div>
+                        <div class="stat-label">Not Significant</div>
+                        <small class="text-muted">padj &ge; 0.05</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls-panel">
+                <h5 class="mb-3"><i class="bi bi-sliders"></i> Plot Controls</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="control-group">
+                            <label class="control-label" for="fcThreshold">
+                                Log2 Fold Change Threshold: <span id="fcValue">1.0</span>
+                            </label>
+                            <input type="range" class="form-range" id="fcThreshold"
+                                   min="0" max="3" step="0.1" value="1.0"
+                                   oninput="updateThreshold()">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="control-group">
+                            <label class="control-label" for="pThreshold">
+                                P-value Threshold: <span id="pValue">0.05</span>
+                            </label>
+                            <input type="range" class="form-range" id="pThreshold"
+                                   min="0.001" max="0.1" step="0.001" value="0.05"
+                                   oninput="updateThreshold()">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary" onclick="resetThresholds()">
+                            <i class="bi bi-arrow-counterclockwise"></i> Reset Thresholds
+                        </button>
+                        <button class="btn btn-outline-primary" onclick="downloadVolcanoData()">
+                            <i class="bi bi-download"></i> Export Data
+                        </button>
+                        <button class="btn btn-outline-secondary" onclick="downloadPlot()">
+                            <i class="bi bi-image"></i> Save Plot
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Volcano Plot -->
+            <div class="plot-container">
+                <div id="volcanoPlot"></div>
+                <div class="mt-3">
+                    <div class="d-flex justify-content-center align-items-center flex-wrap">
+                        <div class="me-3">
+                            <span class="legend-box" style="background: #dc3545;"></span>
+                            <span>Up-regulated</span>
+                        </div>
+                        <div class="me-3">
+                            <span class="legend-box" style="background: #0d6efd;"></span>
+                            <span>Down-regulated</span>
+                        </div>
+                        <div>
+                            <span class="legend-box" style="background: #adb5bd;"></span>
+                            <span>Not significant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top DE Genes Table -->
+            <div class="plot-container">
+                <h5 class="mb-3"><i class="bi bi-table"></i> Top Differentially Expressed Genes</h5>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover" id="topGenesTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Gene</th>
+                                <th>Log2 Fold Change</th>
+                                <th>P-value</th>
+                                <th>Adj. P-value</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="topGenesBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let volcanoData = null;
+        let currentThresholds = {
+            fc: 1.0,
+            pval: 0.05
+        };
+
+        // Load volcano data
+        async function loadVolcanoData() {
+            try {
+                const response = await fetch('../data/analysis/volcano_data.json');
+                const data = await response.json();
+
+                volcanoData = Array.isArray(data) ? data : [];
+
+                console.log('Volcano data loaded:', volcanoData.length, 'genes');
+
+                // Create initial plot
+                createVolcanoPlot();
+
+                // Update statistics
+                updateStatistics();
+
+                // Populate top genes table
+                populateTopGenesTable();
+
+                // Hide loading overlay
+                document.getElementById('loadingOverlay').style.display = 'none';
+
+            } catch (error) {
+                console.error('Error loading volcano data:', error);
+                console.log('Using simulated data for demonstration');
+
+                // Use simulated data
+                createSimulatedVolcanoPlot();
+
+                document.getElementById('loadingOverlay').style.display = 'none';
+            }
+        }
+
+        // Create volcano plot
+        function createVolcanoPlot() {
+            if (!volcanoData || volcanoData.length === 0) {
+                createSimulatedVolcanoPlot();
+                return;
+            }
+
+            const fc_thresh = currentThresholds.fc;
+            const p_thresh = currentThresholds.pval;
+
+            // Categorize genes
+            const upregulated = [];
+            const downregulated = [];
+            const notSignificant = [];
+
+            volcanoData.forEach(gene => {
+                if (gene.padj < p_thresh && Math.abs(gene.log2FoldChange) > fc_thresh) {
+                    if (gene.log2FoldChange > 0) {
+                        upregulated.push(gene);
+                    } else {
+                        downregulated.push(gene);
+                    }
+                } else {
+                    notSignificant.push(gene);
+                }
+            });
+
+            // Create traces
+            const trace_ns = {
+                x: notSignificant.map(g => g.log2FoldChange),
+                y: notSignificant.map(g => g.log10pvalue),
+                mode: 'markers',
+                type: 'scatter',
+                name: 'Not Significant',
+                text: notSignificant.map(g => g.gene),
+                marker: {
+                    size: 5,
+                    color: '#adb5bd',
+                    opacity: 0.5
+                },
+                hovertemplate: '<b>%{text}</b><br>' +
+                              'Log2FC: %{x:.2f}<br>' +
+                              '-Log10(p): %{y:.2f}<br>' +
+                              '<extra></extra>'
+            };
+
+            const trace_up = {
+                x: upregulated.map(g => g.log2FoldChange),
+                y: upregulated.map(g => g.log10pvalue),
+                mode: 'markers',
+                type: 'scatter',
+                name: 'Up-regulated',
+                text: upregulated.map(g => g.gene),
+                marker: {
+                    size: 6,
+                    color: '#dc3545',
+                    opacity: 0.7
+                },
+                hovertemplate: '<b>%{text}</b><br>' +
+                              'Log2FC: %{x:.2f}<br>' +
+                              '-Log10(p): %{y:.2f}<br>' +
+                              '<extra></extra>'
+            };
+
+            const trace_down = {
+                x: downregulated.map(g => g.log2FoldChange),
+                y: downregulated.map(g => g.log10pvalue),
+                mode: 'markers',
+                type: 'scatter',
+                name: 'Down-regulated',
+                text: downregulated.map(g => g.gene),
+                marker: {
+                    size: 6,
+                    color: '#0d6efd',
+                    opacity: 0.7
+                },
+                hovertemplate: '<b>%{text}</b><br>' +
+                              'Log2FC: %{x:.2f}<br>' +
+                              '-Log10(p): %{y:.2f}<br>' +
+                              '<extra></extra>'
+            };
+
+            const layout = {
+                title: 'Differential Gene Expression: Group B vs Group A',
+                xaxis: {
+                    title: 'Log2 Fold Change',
+                    zeroline: true,
+                    zerolinewidth: 2,
+                    zerolinecolor: '#666'
+                },
+                yaxis: {
+                    title: '-Log10(P-value)',
+                    zeroline: false
+                },
+                hovermode: 'closest',
+                height: 600,
+                showlegend: false,
+                shapes: [
+                    // Vertical line at x = fc_thresh
+                    {
+                        type: 'line',
+                        x0: fc_thresh,
+                        x1: fc_thresh,
+                        y0: 0,
+                        y1: 1,
+                        yref: 'paper',
+                        line: {
+                            color: '#999',
+                            width: 1,
+                            dash: 'dash'
+                        }
+                    },
+                    // Vertical line at x = -fc_thresh
+                    {
+                        type: 'line',
+                        x0: -fc_thresh,
+                        x1: -fc_thresh,
+                        y0: 0,
+                        y1: 1,
+                        yref: 'paper',
+                        line: {
+                            color: '#999',
+                            width: 1,
+                            dash: 'dash'
+                        }
+                    },
+                    // Horizontal line at y = -log10(p_thresh)
+                    {
+                        type: 'line',
+                        x0: 0,
+                        x1: 1,
+                        xref: 'paper',
+                        y0: -Math.log10(p_thresh),
+                        y1: -Math.log10(p_thresh),
+                        line: {
+                            color: '#999',
+                            width: 1,
+                            dash: 'dash'
+                        }
+                    }
+                ]
+            };
+
+            const config = {
+                responsive: true,
+                displayModeBar: true,
+                toImageButtonOptions: {
+                    format: 'png',
+                    filename: 'NETA_volcano_plot',
+                    height: 800,
+                    width: 1000,
+                    scale: 2
+                }
+            };
+
+            Plotly.newPlot('volcanoPlot', [trace_ns, trace_up, trace_down], layout, config);
+        }
+
+        // Create simulated volcano plot
+        function createSimulatedVolcanoPlot() {
+            const n = 2000;
+            const log2fc = Array.from({length: n}, () => (Math.random() - 0.5) * 10);
+            const log10p = Array.from({length: n}, () => Math.random() * 8);
+
+            const trace = {
+                x: log2fc,
+                y: log10p,
+                mode: 'markers',
+                type: 'scatter',
+                marker: {
+                    size: 5,
+                    color: log10p,
+                    colorscale: 'Viridis',
+                    opacity: 0.6
+                }
+            };
+
+            const layout = {
+                title: 'Differential Gene Expression (Simulated Data)',
+                xaxis: {title: 'Log2 Fold Change'},
+                yaxis: {title: '-Log10(P-value)'},
+                height: 600
+            };
+
+            Plotly.newPlot('volcanoPlot', [trace], layout, {responsive: true});
+
+            document.getElementById('upCount').textContent = '~300';
+            document.getElementById('downCount').textContent = '~280';
+            document.getElementById('nsCount').textContent = '~1,420';
+        }
+
+        // Update statistics
+        function updateStatistics() {
+            if (!volcanoData) return;
+
+            const fc_thresh = currentThresholds.fc;
+            const p_thresh = currentThresholds.pval;
+
+            const up = volcanoData.filter(g =>
+                g.padj < p_thresh && g.log2FoldChange > fc_thresh
+            ).length;
+
+            const down = volcanoData.filter(g =>
+                g.padj < p_thresh && g.log2FoldChange < -fc_thresh
+            ).length;
+
+            const ns = volcanoData.length - up - down;
+
+            document.getElementById('upCount').textContent = up.toLocaleString();
+            document.getElementById('downCount').textContent = down.toLocaleString();
+            document.getElementById('nsCount').textContent = ns.toLocaleString();
+        }
+
+        // Populate top genes table
+        function populateTopGenesTable() {
+            if (!volcanoData) return;
+
+            // Get significant genes sorted by adjusted p-value
+            const significant = volcanoData
+                .filter(g => g.significant)
+                .sort((a, b) => a.padj - b.padj)
+                .slice(0, 20);
+
+            const tbody = document.getElementById('topGenesBody');
+            tbody.innerHTML = significant.map(gene => `
+                <tr>
+                    <td><strong>${gene.gene}</strong></td>
+                    <td>${gene.log2FoldChange.toFixed(3)}</td>
+                    <td>${gene.log10pvalue ? Math.pow(10, -gene.log10pvalue).toExponential(2) : 'N/A'}</td>
+                    <td>${gene.padj.toExponential(2)}</td>
+                    <td>
+                        <span class="badge ${gene.log2FoldChange > 0 ? 'bg-danger' : 'bg-primary'}">
+                            ${gene.log2FoldChange > 0 ? 'Up' : 'Down'}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Update thresholds
+        function updateThreshold() {
+            currentThresholds.fc = parseFloat(document.getElementById('fcThreshold').value);
+            currentThresholds.pval = parseFloat(document.getElementById('pThreshold').value);
+
+            document.getElementById('fcValue').textContent = currentThresholds.fc.toFixed(1);
+            document.getElementById('pValue').textContent = currentThresholds.pval.toFixed(3);
+
+            createVolcanoPlot();
+            updateStatistics();
+        }
+
+        // Reset thresholds
+        function resetThresholds() {
+            document.getElementById('fcThreshold').value = 1.0;
+            document.getElementById('pThreshold').value = 0.05;
+            updateThreshold();
+        }
+
+        // Download volcano data
+        function downloadVolcanoData() {
+            if (!volcanoData) {
+                alert('Data is still loading. Please wait.');
+                return;
+            }
+
+            const dataStr = JSON.stringify(volcanoData, null, 2);
+            const blob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'NETA_volcano_data.json';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Download plot
+        function downloadPlot() {
+            Plotly.downloadImage('volcanoPlot', {
+                format: 'png',
+                width: 1000,
+                height: 800,
+                filename: 'NETA_volcano_plot'
+            });
+        }
+
+        // Load data on page load
+        window.addEventListener('load', loadVolcanoData);
+    </script>
+</body>
+</html>
