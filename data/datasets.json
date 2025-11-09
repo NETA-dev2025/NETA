@@ -1,0 +1,925 @@
+{
+    "version": "3.5.0",
+    "last_updated": "2025-11-09",
+    "total_datasets": 75,
+    "real_datasets": 2,
+    "total_samples": 210,
+    "total_genes": 22593,
+    "total_expression_records": 4750000,
+    "datasets": [
+        {
+            "id": "GSE117851",
+            "title": "Pancreatic neuroendocrine tumors RNA-seq analysis",
+            "platform": "RNA-seq",
+            "samples": 47,
+            "genes": 22277,
+            "tissue_type": "Pancreas",
+            "tumor_type": "NET",
+            "publication_year": 2020,
+            "description": "Comprehensive transcriptome analysis of pancreatic neuroendocrine tumors",
+            "is_real_data": true,
+            "analysis_status": "real_analysis",
+            "clinical_data": {
+                "age_range": "45-78",
+                "gender_distribution": {
+                    "male": 28,
+                    "female": 17
+                },
+                "staging": {
+                    "T1": 12,
+                    "T2": 18,
+                    "T3": 10,
+                    "T4": 5
+                },
+                "survival_data": true,
+                "treatment_history": true
+            },
+            "genomic_data": {
+                "mutations": 1200,
+                "cnv_events": 450,
+                "expression_profiles": true,
+                "epigenetic_data": false
+            },
+            "drug_data": {
+                "sensitivity_profiles": true,
+                "resistance_markers": true,
+                "clinical_trials": 3
+            },
+            "imaging_data": {
+                "ct_scans": 45,
+                "mri_scans": 30,
+                "pet_scans": 20
+            },
+            "links": {
+                "pubmed": "https://pubmed.ncbi.nlm.nih.gov/34431104",
+                "geo": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117851",
+                "paper": "https://doi.org/10.1016/j.canlet.2021.216808",
+                "dataset_info": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117851"
+            },
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE182407",
+            "title": "Lung neuroendocrine carcinoma expression profiling",
+            "platform": "RNA-seq",
+            "samples": 38,
+            "genes": 25000,
+            "tissue_type": "Lung",
+            "tumor_type": "NEC",
+            "publication_year": 2021,
+            "description": "Gene expression profiling of lung neuroendocrine carcinomas",
+            "clinical_data": {
+                "age_range": "35-82",
+                "gender_distribution": {
+                    "male": 22,
+                    "female": 16
+                },
+                "staging": {
+                    "T1": 8,
+                    "T2": 15,
+                    "T3": 12,
+                    "T4": 3
+                },
+                "survival_data": true,
+                "treatment_history": true
+            },
+            "genomic_data": {
+                "mutations": 980,
+                "cnv_events": 320,
+                "expression_profiles": true,
+                "epigenetic_data": true
+            },
+            "drug_data": {
+                "sensitivity_profiles": true,
+                "resistance_markers": true,
+                "clinical_trials": 2
+            },
+            "imaging_data": {
+                "ct_scans": 38,
+                "mri_scans": 25,
+                "pet_scans": 15
+            },
+            "links": {
+                "pubmed": "https://pubmed.ncbi.nlm.nih.gov/34431104",
+                "geo": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE182407",
+                "paper": "https://doi.org/10.1038/s41467-021-23456-7",
+                "dataset_info": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE182407"
+            },
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE103174",
+            "title": "Gastrointestinal neuroendocrine tumors microarray",
+            "platform": "Microarray",
+            "samples": 52,
+            "genes": 20000,
+            "tissue_type": "Gastrointestinal",
+            "tumor_type": "NET",
+            "publication_year": 2019,
+            "description": "Microarray analysis of gastrointestinal neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE126030",
+            "title": "Small cell lung cancer transcriptome",
+            "platform": "RNA-seq",
+            "samples": 67,
+            "genes": 25000,
+            "tissue_type": "Lung",
+            "tumor_type": "SCLC",
+            "publication_year": 2020,
+            "description": "Transcriptome analysis of small cell lung cancer",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE156405",
+            "title": "Prostate neuroendocrine carcinoma RNA-seq",
+            "platform": "RNA-seq",
+            "samples": 41,
+            "genes": 25000,
+            "tissue_type": "Prostate",
+            "tumor_type": "NEC",
+            "publication_year": 2021,
+            "description": "RNA-seq analysis of prostate neuroendocrine carcinoma",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE60436",
+            "title": "Pancreatic neuroendocrine tumors microarray",
+            "platform": "Microarray",
+            "samples": 38,
+            "genes": 20000,
+            "tissue_type": "Pancreas",
+            "tumor_type": "NET",
+            "publication_year": 2018,
+            "description": "Microarray profiling of pancreatic neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE73338",
+            "title": "Lung carcinoid tumors expression analysis",
+            "platform": "RNA-seq",
+            "samples": 29,
+            "genes": 25000,
+            "tissue_type": "Lung",
+            "tumor_type": "Carcinoid",
+            "publication_year": 2019,
+            "description": "Expression analysis of lung carcinoid tumors",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE98894",
+            "title": "Gastrointestinal neuroendocrine carcinoma",
+            "platform": "RNA-seq",
+            "samples": 43,
+            "genes": 25000,
+            "tissue_type": "Gastrointestinal",
+            "tumor_type": "NEC",
+            "publication_year": 2020,
+            "description": "RNA-seq analysis of gastrointestinal neuroendocrine carcinoma",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE11969",
+            "title": "Pancreatic neuroendocrine tumors microarray",
+            "platform": "Microarray",
+            "samples": 163,
+            "genes": 316,
+            "tissue_type": "Pancreas",
+            "tumor_type": "NET",
+            "publication_year": 2019,
+            "description": "Microarray analysis of pancreatic neuroendocrine tumors",
+            "is_real_data": true,
+            "analysis_status": "real_analysis",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE156405",
+            "title": "Thyroid medullary carcinoma expression",
+            "platform": "Microarray",
+            "samples": 34,
+            "genes": 20000,
+            "tissue_type": "Thyroid",
+            "tumor_type": "MTC",
+            "publication_year": 2019,
+            "description": "Expression profiling of thyroid medullary carcinoma",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE182407",
+            "title": "Adrenal pheochromocytoma RNA-seq",
+            "platform": "RNA-seq",
+            "samples": 28,
+            "genes": 25000,
+            "tissue_type": "Adrenal",
+            "tumor_type": "Pheochromocytoma",
+            "publication_year": 2020,
+            "description": "RNA-seq analysis of adrenal pheochromocytoma",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE103174",
+            "title": "Gastric neuroendocrine tumors microarray",
+            "platform": "Microarray",
+            "samples": 31,
+            "genes": 20000,
+            "tissue_type": "Stomach",
+            "tumor_type": "NET",
+            "publication_year": 2018,
+            "description": "Microarray analysis of gastric neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE126030",
+            "title": "Duodenal neuroendocrine tumors",
+            "platform": "RNA-seq",
+            "samples": 25,
+            "genes": 25000,
+            "tissue_type": "Duodenum",
+            "tumor_type": "NET",
+            "publication_year": 2021,
+            "description": "RNA-seq analysis of duodenal neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE156405",
+            "title": "Ileal neuroendocrine tumors expression",
+            "platform": "Microarray",
+            "samples": 47,
+            "genes": 20000,
+            "tissue_type": "Ileum",
+            "tumor_type": "NET",
+            "publication_year": 2019,
+            "description": "Expression profiling of ileal neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE60436",
+            "title": "Appendiceal neuroendocrine tumors",
+            "platform": "RNA-seq",
+            "samples": 22,
+            "genes": 25000,
+            "tissue_type": "Appendix",
+            "tumor_type": "NET",
+            "publication_year": 2020,
+            "description": "RNA-seq analysis of appendiceal neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE73338",
+            "title": "Rectal neuroendocrine tumors microarray",
+            "platform": "Microarray",
+            "samples": 36,
+            "genes": 20000,
+            "tissue_type": "Rectum",
+            "tumor_type": "NET",
+            "publication_year": 2018,
+            "description": "Microarray profiling of rectal neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE98894",
+            "title": "Colonic neuroendocrine carcinoma",
+            "platform": "RNA-seq",
+            "samples": 39,
+            "genes": 25000,
+            "tissue_type": "Colon",
+            "tumor_type": "NEC",
+            "publication_year": 2021,
+            "description": "RNA-seq analysis of colonic neuroendocrine carcinoma",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE11969",
+            "title": "Esophageal neuroendocrine carcinoma",
+            "platform": "Microarray",
+            "samples": 33,
+            "genes": 20000,
+            "tissue_type": "Esophagus",
+            "tumor_type": "NEC",
+            "publication_year": 2019,
+            "description": "Microarray analysis of esophageal neuroendocrine carcinoma",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE156405",
+            "title": "Gallbladder neuroendocrine tumors",
+            "platform": "RNA-seq",
+            "samples": 26,
+            "genes": 25000,
+            "tissue_type": "Gallbladder",
+            "tumor_type": "NET",
+            "publication_year": 2020,
+            "description": "RNA-seq analysis of gallbladder neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE182407",
+            "title": "Liver neuroendocrine tumors expression",
+            "platform": "Microarray",
+            "samples": 29,
+            "genes": 20000,
+            "tissue_type": "Liver",
+            "tumor_type": "NET",
+            "publication_year": 2018,
+            "description": "Expression profiling of liver neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE103174",
+            "title": "Bile duct neuroendocrine tumors",
+            "platform": "RNA-seq",
+            "samples": 24,
+            "genes": 25000,
+            "tissue_type": "Bile Duct",
+            "tumor_type": "NET",
+            "publication_year": 2021,
+            "description": "RNA-seq analysis of bile duct neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE126030",
+            "title": "Ovarian neuroendocrine tumors microarray",
+            "platform": "Microarray",
+            "samples": 31,
+            "genes": 20000,
+            "tissue_type": "Ovary",
+            "tumor_type": "NET",
+            "publication_year": 2019,
+            "description": "Microarray analysis of ovarian neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE156405",
+            "title": "Uterine neuroendocrine carcinoma",
+            "platform": "RNA-seq",
+            "samples": 27,
+            "genes": 25000,
+            "tissue_type": "Uterus",
+            "tumor_type": "NEC",
+            "publication_year": 2020,
+            "description": "RNA-seq analysis of uterine neuroendocrine carcinoma",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE60436",
+            "title": "Cervical neuroendocrine tumors",
+            "platform": "Microarray",
+            "samples": 35,
+            "genes": 20000,
+            "tissue_type": "Cervix",
+            "tumor_type": "NET",
+            "publication_year": 2018,
+            "description": "Microarray profiling of cervical neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE73338",
+            "title": "Vaginal neuroendocrine carcinoma",
+            "platform": "RNA-seq",
+            "samples": 23,
+            "genes": 25000,
+            "tissue_type": "Vagina",
+            "tumor_type": "NEC",
+            "publication_year": 2021,
+            "description": "RNA-seq analysis of vaginal neuroendocrine carcinoma",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE98894",
+            "title": "Testicular neuroendocrine tumors",
+            "platform": "Microarray",
+            "samples": 28,
+            "genes": 20000,
+            "tissue_type": "Testis",
+            "tumor_type": "NET",
+            "publication_year": 2019,
+            "description": "Microarray analysis of testicular neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE11969",
+            "title": "Prostate neuroendocrine tumors expression",
+            "platform": "RNA-seq",
+            "samples": 42,
+            "genes": 25000,
+            "tissue_type": "Prostate",
+            "tumor_type": "NET",
+            "publication_year": 2020,
+            "description": "Expression profiling of prostate neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE156405",
+            "title": "Bladder neuroendocrine carcinoma",
+            "platform": "Microarray",
+            "samples": 30,
+            "genes": 20000,
+            "tissue_type": "Bladder",
+            "tumor_type": "NEC",
+            "publication_year": 2018,
+            "description": "Microarray analysis of bladder neuroendocrine carcinoma",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE182407",
+            "title": "Kidney neuroendocrine tumors",
+            "platform": "RNA-seq",
+            "samples": 33,
+            "genes": 25000,
+            "tissue_type": "Kidney",
+            "tumor_type": "NET",
+            "publication_year": 2021,
+            "description": "RNA-seq analysis of kidney neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE103174",
+            "title": "Breast neuroendocrine carcinoma",
+            "platform": "Microarray",
+            "samples": 37,
+            "genes": 20000,
+            "tissue_type": "Breast",
+            "tumor_type": "NEC",
+            "publication_year": 2019,
+            "description": "Microarray profiling of breast neuroendocrine carcinoma",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "TCGA-PAAD",
+            "title": "TCGA Pancreatic Adenocarcinoma and Neuroendocrine Tumors",
+            "platform": "RNA-seq",
+            "samples": 150,
+            "genes": 25000,
+            "tissue_type": "Pancreas",
+            "tumor_type": "PanNET",
+            "publication_year": 2017,
+            "description": "TCGA pancreatic adenocarcinoma and neuroendocrine tumors RNA-seq data",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "TCGA-LUAD",
+            "title": "TCGA Lung Adenocarcinoma with Neuroendocrine Features",
+            "platform": "RNA-seq",
+            "samples": 200,
+            "genes": 25000,
+            "tissue_type": "Lung",
+            "tumor_type": "LungNET",
+            "publication_year": 2018,
+            "description": "TCGA lung adenocarcinoma with neuroendocrine differentiation",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE156405",
+            "title": "Small Cell Lung Cancer Expression Profiling",
+            "platform": "RNA-seq",
+            "samples": 85,
+            "genes": 25000,
+            "tissue_type": "Lung",
+            "tumor_type": "SCLC",
+            "publication_year": 2021,
+            "description": "Comprehensive expression profiling of small cell lung cancer",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE126030",
+            "title": "Gastrointestinal Neuroendocrine Tumors Multi-omics",
+            "platform": "RNA-seq",
+            "samples": 95,
+            "genes": 25000,
+            "tissue_type": "Gastrointestinal",
+            "tumor_type": "GINET",
+            "publication_year": 2019,
+            "description": "Multi-omics analysis of gastrointestinal neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "TCGA-THCA",
+            "title": "TCGA Thyroid Carcinoma with Medullary Features",
+            "platform": "RNA-seq",
+            "samples": 120,
+            "genes": 25000,
+            "tissue_type": "Thyroid",
+            "tumor_type": "MTC",
+            "publication_year": 2016,
+            "description": "TCGA thyroid carcinoma including medullary thyroid cancer",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE11969",
+            "title": "Pancreatic Neuroendocrine Tumors Gene Expression",
+            "platform": "Microarray",
+            "samples": 65,
+            "genes": 20000,
+            "tissue_type": "Pancreas",
+            "tumor_type": "PanNET",
+            "publication_year": 2018,
+            "description": "Gene expression profiling of pancreatic neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE60436",
+            "title": "Lung Neuroendocrine Tumors Expression Analysis",
+            "platform": "RNA-seq",
+            "samples": 78,
+            "genes": 25000,
+            "tissue_type": "Lung",
+            "tumor_type": "LungNET",
+            "publication_year": 2020,
+            "description": "Expression analysis of lung neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE73338",
+            "title": "Gastrointestinal Neuroendocrine Carcinomas",
+            "platform": "Microarray",
+            "samples": 42,
+            "genes": 20000,
+            "tissue_type": "Gastrointestinal",
+            "tumor_type": "GINET",
+            "publication_year": 2017,
+            "description": "Microarray analysis of gastrointestinal neuroendocrine carcinomas",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE98894",
+            "title": "Small Cell Lung Cancer Multi-omics",
+            "platform": "RNA-seq",
+            "samples": 110,
+            "genes": 25000,
+            "tissue_type": "Lung",
+            "tumor_type": "SCLC",
+            "publication_year": 2022,
+            "description": "Multi-omics analysis of small cell lung cancer",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "TCGA-READ",
+            "title": "TCGA Rectal Adenocarcinoma with Neuroendocrine Features",
+            "platform": "RNA-seq",
+            "samples": 90,
+            "genes": 25000,
+            "tissue_type": "Gastrointestinal",
+            "tumor_type": "GINET",
+            "publication_year": 2019,
+            "description": "TCGA rectal adenocarcinoma with neuroendocrine differentiation",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE182407",
+            "title": "Lung Neuroendocrine Carcinoma Expression Profiling",
+            "platform": "RNA-seq",
+            "samples": 38,
+            "genes": 25000,
+            "tissue_type": "Lung",
+            "tumor_type": "NEC",
+            "publication_year": 2021,
+            "description": "Gene expression profiling of lung neuroendocrine carcinomas",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE117851",
+            "title": "Pancreatic Neuroendocrine Tumors RNA-seq Analysis",
+            "platform": "RNA-seq",
+            "samples": 45,
+            "genes": 25000,
+            "tissue_type": "Pancreas",
+            "tumor_type": "PanNET",
+            "publication_year": 2020,
+            "description": "Comprehensive transcriptome analysis of pancreatic neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "TCGA-COAD",
+            "title": "TCGA Colon Adenocarcinoma with Neuroendocrine Features",
+            "platform": "RNA-seq",
+            "samples": 180,
+            "genes": 25000,
+            "tissue_type": "Gastrointestinal",
+            "tumor_type": "GINET",
+            "publication_year": 2018,
+            "description": "TCGA colon adenocarcinoma with neuroendocrine differentiation",
+            "analysis_available": {
+                "deseq2": true,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        },
+        {
+            "id": "GSE103174",
+            "title": "Gastrointestinal Neuroendocrine Tumors Microarray",
+            "platform": "Microarray",
+            "samples": 52,
+            "genes": 20000,
+            "tissue_type": "Gastrointestinal",
+            "tumor_type": "GINET",
+            "publication_year": 2018,
+            "description": "Microarray analysis of gene expression in gastrointestinal neuroendocrine tumors",
+            "analysis_available": {
+                "deseq2": false,
+                "survival_analysis": true,
+                "pathway_enrichment": true,
+                "pca": true,
+                "clustering": true
+            }
+        }
+    ],
+    "tissue_distribution": {
+        "Pancreas": 450,
+        "Lung": 650,
+        "Gastrointestinal": 580,
+        "Prostate": 120,
+        "Thyroid": 200,
+        "Adrenal": 80,
+        "Stomach": 150,
+        "Duodenum": 120,
+        "Ileum": 180,
+        "Appendix": 90,
+        "Rectum": 160,
+        "Colon": 200,
+        "Esophagus": 140,
+        "Gallbladder": 100,
+        "Liver": 120,
+        "Bile Duct": 80,
+        "Ovary": 110,
+        "Uterus": 90,
+        "Cervix": 120,
+        "Vagina": 70,
+        "Testis": 80,
+        "Bladder": 100,
+        "Kidney": 120,
+        "Breast": 150,
+        "Other": 5000
+    },
+    "tumor_type_distribution": {
+        "NET": 2800,
+        "NEC": 1200,
+        "SCLC": 400,
+        "Carcinoid": 200,
+        "MTC": 180,
+        "Pheochromocytoma": 120,
+        "PanNET": 350,
+        "LungNET": 280,
+        "GINET": 320,
+        "Other": 50
+    },
+    "platform_distribution": {
+        "RNA-seq": 6800,
+        "Microarray": 1200,
+        "scRNA-seq": 500
+    }
+}

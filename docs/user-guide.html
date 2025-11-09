@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Guide - NETA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+        }
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+        .doc-content {
+            max-width: 800px;
+        }
+        .doc-content h2 {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        .doc-content h2:first-child {
+            margin-top: 0;
+            border-top: none;
+        }
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #1f2937;
+            color: #f3f4f6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html">
+                <i class="bi bi-diagram-3"></i> NETA
+            </a>
+            <div class="ms-auto">
+                <a href="../index.html" class="btn btn-outline-primary btn-sm">
+                    <i class="bi bi-house"></i> Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar p-3">
+                <div class="position-sticky">
+                    <h6 class="text-muted mb-3">Contents</h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link" href="#intro">Introduction</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#browsing">Browsing Data</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#downloading">Downloading</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#analysis">Running Analysis</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#formats">Data Formats</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="doc-content py-5">
+                    <h1>NETA User Guide</h1>
+                    <p class="lead">Complete guide to using the Pan-Neuroendocrine Tumor Atlas</p>
+
+                    <h2 id="intro">Introduction</h2>
+                    <p>
+                        NETA is a comprehensive transcriptomic resource for neuroendocrine tumor research.
+                        This guide will help you navigate the database, download data, and run analyses.
+                    </p>
+
+                    <h3>Quick Overview</h3>
+                    <ul>
+                        <li><strong>75+ datasets</strong> from GEO, TCGA, and published studies</li>
+                        <li><strong>2,500+ samples</strong> across diverse NET subtypes</li>
+                        <li><strong>3 platforms</strong>: Bulk RNA-seq, scRNA-seq, Microarray</li>
+                        <li><strong>Ready-to-use</strong> count matrices and analysis scripts</li>
+                    </ul>
+
+                    <h2 id="browsing">Browsing Datasets</h2>
+
+                    <h3>Using the Web Interface</h3>
+                    <ol>
+                        <li>Visit the <a href="../index.html#datasets">Datasets section</a></li>
+                        <li>Browse datasets by:
+                            <ul>
+                                <li>Data platform (RNA-seq, scRNA-seq, Microarray)</li>
+                                <li>Tissue type (Pancreas, Lung, GI, etc.)</li>
+                                <li>Sample size</li>
+                                <li>Publication year</li>
+                            </ul>
+                        </li>
+                        <li>Click on a dataset to view details</li>
+                    </ol>
+
+                    <h3>Dataset Information</h3>
+                    <p>Each dataset page includes:</p>
+                    <ul>
+                        <li>Sample characteristics and clinical annotations</li>
+                        <li>Platform and processing details</li>
+                        <li>Quality control metrics</li>
+                        <li>Download links for raw and processed data</li>
+                        <li>Links to original publications</li>
+                    </ul>
+
+                    <h2 id="downloading">Downloading Data</h2>
+
+                    <h3>Available Data Files</h3>
+                    <p>For each dataset, you can download:</p>
+
+                    <h4>Bulk RNA-seq</h4>
+                    <ul>
+                        <li><code>raw_counts.csv</code> - Raw count matrix (genes × samples)</li>
+                        <li><code>normalized_counts.csv</code> - TPM or FPKM normalized expression</li>
+                        <li><code>sample_metadata.csv</code> - Sample annotations</li>
+                        <li><code>gene_annotations.csv</code> - Gene information</li>
+                    </ul>
+
+                    <h4>Single-Cell RNA-seq</h4>
+                    <ul>
+                        <li><code>expression_matrix.h5</code> - HDF5 format expression data</li>
+                        <li><code>cell_metadata.csv</code> - Cell annotations and UMAP coordinates</li>
+                        <li><code>marker_genes.csv</code> - Top markers for each cell type</li>
+                        <li><code>seurat_object.rds</code> - Pre-processed Seurat object (R)</li>
+                    </ul>
+
+                    <h4>Microarray</h4>
+                    <ul>
+                        <li><code>normalized_expression.csv</code> - Normalized probe intensities</li>
+                        <li><code>sample_metadata.csv</code> - Sample annotations</li>
+                        <li><code>platform_annotation.csv</code> - Probe annotations</li>
+                    </ul>
+
+                    <h3>Download Methods</h3>
+
+                    <h4>Method 1: Direct Download</h4>
+                    <p>Click the download button on the dataset page.</p>
+
+                    <h4>Method 2: Command Line</h4>
+                    <pre><code># Download a specific dataset
+wget https://neta-dev2025.github.io/NETA/data/GSE98894/GSE98894_raw_counts.csv
+
+# Or use curl
+curl -O https://neta-dev2025.github.io/NETA/data/GSE98894/GSE98894_raw_counts.csv</code></pre>
+
+                    <h4>Method 3: R Package (Coming Soon)</h4>
+                    <pre><code>library(NETA)
+
+# Download dataset
+download_dataset("GSE98894", destdir = "data/")
+
+# Load into R directly
+counts <- load_counts("GSE98894")</code></pre>
+
+                    <h2 id="analysis">Running Analyses</h2>
+
+                    <h3>Differential Expression (Bulk RNA-seq)</h3>
+
+                    <h4>Using DESeq2</h4>
+                    <pre><code>library(DESeq2)
+
+# Load data
+counts <- read.csv("GSE98894_raw_counts.csv", row.names=1)
+metadata <- read.csv("sample_metadata.csv", row.names=1)
+
+# Create DESeq2 object
+dds <- DESeqDataSetFromMatrix(
+  countData = counts,
+  colData = metadata,
+  design = ~ condition
+)
+
+# Run analysis
+dds <- DESeq(dds)
+results <- results(dds)
+
+# Extract significant genes
+sig_genes <- subset(results, padj < 0.05)</code></pre>
+
+                    <h4>Using edgeR</h4>
+                    <pre><code>library(edgeR)
+
+# Create DGEList object
+y <- DGEList(counts = counts)
+
+# Filter low expression genes
+keep <- filterByExpr(y)
+y <- y[keep, ]
+
+# Normalize
+y <- calcNormFactors(y)
+
+# Design matrix
+design <- model.matrix(~ condition, data = metadata)
+
+# Estimate dispersion and fit model
+y <- estimateDisp(y, design)
+fit <- glmQLFit(y, design)
+qlf <- glmQLFTest(fit, coef = 2)
+
+# Get results
+results <- topTags(qlf, n = Inf)</code></pre>
+
+                    <h3>Single-Cell Analysis</h3>
+
+                    <h4>Using Seurat</h4>
+                    <pre><code>library(Seurat)
+
+# Load preprocessed object
+seurat_obj <- readRDS("seurat_object.rds")
+
+# Or create from scratch
+counts <- Read10X_h5("expression_matrix.h5")
+seurat_obj <- CreateSeuratObject(counts = counts)
+
+# Standard workflow
+seurat_obj <- NormalizeData(seurat_obj)
+seurat_obj <- FindVariableFeatures(seurat_obj)
+seurat_obj <- ScaleData(seurat_obj)
+seurat_obj <- RunPCA(seurat_obj)
+seurat_obj <- FindNeighbors(seurat_obj, dims = 1:30)
+seurat_obj <- FindClusters(seurat_obj, resolution = 0.5)
+seurat_obj <- RunUMAP(seurat_obj, dims = 1:30)
+
+# Visualize
+DimPlot(seurat_obj, reduction = "umap")</code></pre>
+
+                    <h3>Pathway Enrichment</h3>
+
+                    <pre><code>library(clusterProfiler)
+library(org.Hs.eg.db)
+
+# GO enrichment
+ego <- enrichGO(
+  gene = sig_genes,
+  OrgDb = org.Hs.eg.db,
+  ont = "BP",
+  pAdjustMethod = "BH",
+  pvalueCutoff = 0.05,
+  qvalueCutoff = 0.05
+)
+
+# KEGG enrichment
+ekegg <- enrichKEGG(
+  gene = sig_genes,
+  organism = 'hsa',
+  pvalueCutoff = 0.05
+)
+
+# Visualize
+dotplot(ego, showCategory = 20)
+barplot(ekegg, showCategory = 15)</code></pre>
+
+                    <h2 id="formats">Data Formats</h2>
+
+                    <h3>Count Matrix Format</h3>
+                    <p>Count matrices are provided as CSV files:</p>
+                    <pre><code>            Sample1  Sample2  Sample3  Sample4
+Gene1          120      145       98      156
+Gene2         2340     2156     2401     2289
+Gene3            0        2        1        0
+Gene4          456      523      478      501</code></pre>
+
+                    <h3>Metadata Format</h3>
+                    <p>Sample metadata includes:</p>
+                    <ul>
+                        <li><strong>sample_id</strong>: Unique sample identifier</li>
+                        <li><strong>condition</strong>: Experimental condition or tumor type</li>
+                        <li><strong>tissue</strong>: Tissue of origin</li>
+                        <li><strong>stage</strong>: Disease stage (if available)</li>
+                        <li><strong>age</strong>, <strong>sex</strong>: Patient demographics</li>
+                        <li><strong>batch</strong>: Sequencing batch</li>
+                    </ul>
+
+                    <h2 id="faq">Frequently Asked Questions</h2>
+
+                    <h3>General Questions</h3>
+
+                    <h4>Q: Is NETA data free to use?</h4>
+                    <p>
+                        <strong>A:</strong> Yes! All data is released under MIT License for both academic
+                        and commercial use. Please cite the original data sources.
+                    </p>
+
+                    <h4>Q: How often is the database updated?</h4>
+                    <p>
+                        <strong>A:</strong> We add new datasets monthly and update existing datasets
+                        as new versions become available.
+                    </p>
+
+                    <h4>Q: Can I submit my own dataset?</h4>
+                    <p>
+                        <strong>A:</strong> Yes! Please email contact@neta-atlas.org with your GEO
+                        accession number or contact us for private data sharing.
+                    </p>
+
+                    <h3>Technical Questions</h3>
+
+                    <h4>Q: Which R version is recommended?</h4>
+                    <p>
+                        <strong>A:</strong> R ≥ 4.0.0 is recommended for all analysis scripts.
+                    </p>
+
+                    <h4>Q: Are the count matrices normalized?</h4>
+                    <p>
+                        <strong>A:</strong> Files named <code>raw_counts.csv</code> contain unnormalized
+                        integer counts suitable for DESeq2/edgeR. Files named <code>normalized_counts.csv</code>
+                        contain TPM or FPKM values.
+                    </p>
+
+                    <h4>Q: Can I use this data with Python?</h4>
+                    <p>
+                        <strong>A:</strong> Absolutely! All CSV files can be read with pandas, and
+                        single-cell data works with scanpy.
+                    </p>
+
+                    <div class="alert alert-info mt-5">
+                        <h5><i class="bi bi-info-circle"></i> Need More Help?</h5>
+                        <p class="mb-0">
+                            Contact us at <a href="mailto:contact@neta-atlas.org">contact@neta-atlas.org</a>
+                            or open an issue on <a href="https://github.com/NETA-dev2025/NETA/issues" target="_blank">GitHub</a>.
+                        </p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for sidebar links
+        document.querySelectorAll('.sidebar a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

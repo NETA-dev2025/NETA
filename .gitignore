@@ -1,0 +1,31 @@
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# R
+.Rhistory
+.RData
+.Rproj.user
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+npm-debug.log
+
+# Temporary files
+*.tmp
+*.bak
+*.log
