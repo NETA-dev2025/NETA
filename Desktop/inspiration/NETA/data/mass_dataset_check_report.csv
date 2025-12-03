@@ -1,0 +1,39 @@
+ID,Title,Samples,Platform,Verdict,Note
+GSE178398,RNA-seq analysis of Metastatic and Localized hu...,22,GPL16791,✅ 强烈推荐,用户指定: PanNET
+GSE160393,Resistance to AR Signaling Inhibition Does Not ...,62,GPL24676,✅ 强烈推荐,用户指定: Prostate NEPC PDX
+GSE215653,Reprogramming Landscape Highlighted by Dynamic ...,6,GPL24676,✅ 强烈推荐,用户指定: Prostate NEPC Cell Line
+GSE73338,Pancreatic endocrine tumours: expression profil...,97,GPL20945,❌ 排除 (芯片),Array数据 (GPL20945)
+GSE117851,Gene expression profile of Human non-functional...,47,GPL571,❌ 排除 (芯片),Array数据 (GPL571)
+GSE103174,Expression data from lung tissue in mild-modera...,53,GPL13667,❌ 排除 (芯片),Array数据 (GPL13667)
+GSE11969,Expression Profile-Defined Classification of Lu...,163,GPL7015,❌ 排除 (芯片),Array数据 (GPL7015)
+GSE200306,Molecular characterization of kidney compartmen...,181,GPL21847,❌ 排除 (芯片),Array数据 (GPL21847)
+GSE206046,Expression profiles of MCF7-CV and MCF7-6SA,2,GPL570,❌ 排除 (芯片),Array数据 (GPL570)
+GSE6919,Expression Data from Normal and Prostate Tumor ...,504,GPL8300,❌ 排除 (芯片),Array数据 (GPL8300)
+GSE55945,Gene Expression Profiling of Prostate Benign an...,21,GPL570,❌ 排除 (芯片),Array数据 (GPL570)
+GSE60436,Gene Expression Profile of Fibrovascular Membra...,9,GPL6884,❌ 排除 (芯片),Array数据 (GPL6884)
+GSE18842,Gene expression analysis of human lung cancer a...,91,GPL570,❌ 排除 (芯片),Array数据 (GPL570)
+GSE26899,Characterization of gene expression profiles of...,108,GPL6947,❌ 排除 (芯片),Array数据 (GPL6947)
+GSE68468,caArray_notte-00422: Molecular Dissection of Co...,390,GPL96,❌ 排除 (芯片),Array数据 (GPL96)
+GSE17536,Metastasis Gene Expression Profile Predicts Rec...,177,GPL570,❌ 排除 (芯片),Array数据 (GPL570)
+GSE33113,AMC colon cancer AJCCII,96,GPL570,❌ 排除 (芯片),Array数据 (GPL570)
+GSE15471,Whole-Tissue Gene Expression Study of Pancreati...,78,GPL570,❌ 排除 (芯片),Array数据 (GPL570)
+GSE16515,Expression data from Mayo Clinic Pancreatic Tum...,52,GPL570,❌ 排除 (芯片),Array数据 (GPL570)
+GSE28735,Microarray gene-expression profiles of 45 match...,90,GPL6244,❌ 排除 (芯片),Array数据 (GPL6244)
+GSE32676,Integrative Survival-Based Molecular Profiling ...,32,GPL570,❌ 排除 (芯片),Array数据 (GPL570)
+GSE71729,Virtual Microdissection of Pancreatic Ductal Ad...,357,GPL20769,❌ 排除 (芯片),Array数据 (GPL20769)
+GSE27155,"Human thyroid adenomas, carcinomas, and normals",99,GPL96,❌ 排除 (芯片),Array数据 (GPL96)
+GSE33630,Normal thyrocytes vs papillary vs anaplastic th...,105,GPL570,❌ 排除 (芯片),Array数据 (GPL570)
+GSE33371,Beta-catenin status effects in human adrenocort...,65,GPL570,❌ 排除 (芯片),Array数据 (GPL570)
+GSE36314,Human prolactinoma,7,GPL8300,❌ 排除 (芯片),Array数据 (GPL8300)
+GSE51618,Gene expression profiling of non-invasion and i...,10,GPL6480,❌ 排除 (芯片),Array数据 (GPL6480)
+GSE19422,Gene expression profiling of pheochromocytoma (...,90,GPL6480,❌ 排除 (芯片),Array数据 (GPL6480)
+GSE43292,Genome-wide expression study of human carotid a...,64,GPL6244,❌ 排除 (芯片),Array数据 (GPL6244)
+GSE4107,Expression profiling in early onset colorectal ...,22,GPL570,❌ 排除 (芯片),Array数据 (GPL570)
+GSE46234,Expression data from human pancreatic tissue fr...,8,GPL570,❌ 排除 (芯片),Array数据 (GPL570)
+TCGA-LUAD,TCGA-LUAD Project,Variable,Illumina,✅ 强烈推荐,高质量临床+表达数据
+TCGA-LUSC,TCGA-LUSC Project,Variable,Illumina,✅ 强烈推荐,高质量临床+表达数据
+TCGA-PAAD,TCGA-PAAD Project,Variable,Illumina,✅ 强烈推荐,高质量临床+表达数据
+TCGA-PRAD,TCGA-PRAD Project,Variable,Illumina,✅ 强烈推荐,高质量临床+表达数据
+TCGA-STAD,TCGA-STAD Project,Variable,Illumina,✅ 强烈推荐,高质量临床+表达数据
+TCGA-COAD,TCGA-COAD Project,Variable,Illumina,✅ 强烈推荐,高质量临床+表达数据
+TCGA-READ,TCGA-READ Project,Variable,Illumina,✅ 强烈推荐,高质量临床+表达数据

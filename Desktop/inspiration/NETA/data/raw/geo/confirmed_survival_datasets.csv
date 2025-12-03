@@ -1,0 +1,16 @@
+gse,n,time_cols,status_cols
+GSE283522,1254,"contact_zip/postal_code;anastrozol (ai)_(duration_in_years):ch1;antimetabolites:ch1;arimidex (ai,_anastrozol)_(duration_in_years):ch1;aromasin (ai/exemestan)_(duration_in_years):ch1;aromatase inhibitors_(duration_in_years):ch1;bisphosphonat (duration_in_years):ch1;bisphosphonat (y/n):ch1;cyclophosphamide (endoxan)_(cycles):ch1;cyclophosphamide (endoxan)_(y/n):ch1;denosumab (duration_in_years):ch1;denosumab (y/n):ch1;ebefen (tamoxifen)_(duration_in_years):ch1;er negpos:ch1;etoposid (cycles):ch1;etoposid (y/n):ch1;exemestan (ai)_(duration_in_years):ch1;femara (ai,_letrozol)_(duration_in_years):ch1;gnrh _(duration_in_years):ch1;goserelin (gnrh)__(y/n):ch1;goserelin (gnrh)_(duration_in_years):ch1;her2 negpos:ch1;letrozol (ai)_(duration_in_years):ch1;nolvadex (tamoxifen)(duration_in_years):ch1;overall survival_(months):ch1;pr negpos:ch1;progression free_survival_(months):ch1;tamoxifen _(duration_in_years):ch1;taxol dosage:ch1;xeloda (duration_in_years):ch1;xgeva (denosumab)_(duration_in_years):ch1;xgeva (denosumab)_(y/n):ch1;zoladex (gnrh,_goserelin)_(duration_in_years):ch1;zoladex (gnrh,_goserelin)_(y/n):ch1;zometa (duration_in_years):ch1",status;menopausal status:ch1;node status:ch1;organ relapse/metastasis:ch1;relapse/metastasis:ch1
+GSE215307,375,contact_zip/postal_code,status
+GSE293591,365,contact_zip/postal_code;diagnosis:ch1,status
+GSE200146,249,contact_zip/postal_code;time point:ch1,status
+GSE240138,222,contact_zip/postal_code,status
+GSE281260,146,contact_zip/postal_code,status
+GSE141119,140,contact_zip/postal_code;patient diagnosis:ch1;time:ch1,status
+GSE233622,115,contact_zip/postal_code;time:ch1,status
+GSE282471,111,contact_zip/postal_code,status
+GSE255299,96,contact_zip/postal_code;day (relative to treatment start date):ch1,status
+GSE89127,90,contact_zip/postal_code;treatment duration:ch1,status
+GSE289743,83,contact_zip/postal_code;sample.collection.time:ch1,status
+GSE276031,4,contact_zip/postal_code,status
+GSE284467,75,contact_zip/postal_code,status
+GSE192402,74,contact_zip/postal_code;timepoint:ch1,status;mutation status:ch1

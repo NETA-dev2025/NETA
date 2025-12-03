@@ -1,0 +1,8 @@
+metric,value
+Total samples,308
+Total genes,29481
+Data sources (GEO series),9
+Min expression,-3.67
+Max expression,16.15
+Median expression,2.43
+Genes with zero variance,0

@@ -1,0 +1,17 @@
+ID,Title,Samples,Type,Organism,Status,Verdict,Note
+GSE244945,NOTCH1 reverses immune suppression in small cell lung cancer through reactivation of STING [RNA-seq],69,Expression profiling by high throughput sequencing,Homo sapiens,✅ 已入库 (Downloaded),✅ 已入库,已成功整合
+GSE60052,The RNAseq of 79 small cell lung cancer (sclc) and 7 normal control,86,Expression profiling by high throughput sequencing,Homo sapiens,✅ 已入库 (Downloaded),✅ 已入库,已成功整合
+GSE293591,Integrative Assessment of RNA-seq and IHC: Linking Tumor Biomarkers and Microenvironment,365,Expression profiling by high throughput sequencing,Homo sapiens,⏳ 待检查 (Pending),⚠️ 需人工确认,未检测到明显NEN关键词，需检查是否包含NEN亚型
+GSE280271,Deep sequencing of microRNA and total RNA reveals distinct microRNA-mRNA signatures that differentiate pancreatic neuroendocrine neoplasia from non-diseased pancreas tissue [RNA-seq],13,Expression profiling by high throughput sequencing,Homo sapiens,⏳ 待检查 (Pending),✅ 强烈推荐,符合 Human RNA-seq 且包含 NEN 关键词
+GSE118014,Transcriptome of human non-functional pancreatic neuroendocrine tumors (PanNETs),33,Expression profiling by high throughput sequencing,Homo sapiens,✅ 已入库 (Downloaded),✅ 已入库,已成功整合
+GSE128201,RNA-seq analyses of human prostate cancer cells,9,Expression profiling by high throughput sequencing,Homo sapiens,⏳ 待检查 (Pending),⚠️ 需人工确认,未检测到明显NEN关键词，需检查是否包含NEN亚型
+GSE182407,Reciprocal YAP1 loss and INSM1 expression in neuroendocrine prostate cancer,24,Expression profiling by high throughput sequencing,Homo sapiens,⏳ 待检查 (Pending),✅ 强烈推荐,符合 Human RNA-seq 且包含 NEN 关键词
+GSE115112,Estrogen responsive transcriptome of estrogen receptor positive normal human breast cells in 3D cultures,39,Expression profiling by high throughput sequencing,Homo sapiens,⏳ 待检查 (Pending),⚠️ 需人工确认,未检测到明显NEN关键词，需检查是否包含NEN亚型
+GSE255592,A novel role for Neurog2 in MYCN driven neuroendocrine plasticity of prostate cancer (shRNA),10,Expression profiling by array,Homo sapiens,⏳ 待检查 (Pending),⚠️ 需人工确认,可能是芯片数据 (Expression profiling by array)
+GSE11969,Expression Profile-Defined Classification of Lung Adenocarcinoma,163,Expression profiling by array,Homo sapiens,⏳ 待检查 (Pending),⚠️ 需人工确认,可能是芯片 (Expression profiling by array)
+GSE98894,Expression profile of Gastro-Entero-Pancreatic Neuroendocrine Tumors (GEP-NET),212,Expression profiling by high throughput sequencing,Homo sapiens,⏳ 待检查 (Pending),✅ 强烈推荐,符合 Human RNA-seq 且包含 NEN 关键词
+GSE117851,Gene expression profile of Human non-functional Pancreatic neuroendocrine tumors (PanNETs),47,Expression profiling by array,Homo sapiens,⏳ 待检查 (Pending),⚠️ 需人工确认,可能是芯片 (Expression profiling by array)
+GSE126030,A single cell reference map for human blood and tissue T cell activation,16,Expression profiling by high throughput sequencing,Homo sapiens,⏳ 待检查 (Pending),⚠️ 需人工确认,未检测到明显NEN关键词
+GSE156405,Elucidation of tumor-stromal heterogeneity and the ligand-receptor interactome by single cell transcriptomics in real-world pancreatic cancer biopsies,17,Expression profiling by high throughput sequencing,Homo sapiens,⏳ 待检查 (Pending),⚠️ 需人工确认,未检测到明显NEN关键词
+GSE60436,Gene Expression Profile of Fibrovascular Membrane Associated with Proliferative Diabetic Retinopathy,9,Expression profiling by array,Homo sapiens,⏳ 待检查 (Pending),⚠️ 需人工确认,可能是芯片 (Expression profiling by array)
+GSE103174,Expression data from lung tissue in mild-moderate COPD,53,Expression profiling by array,Homo sapiens,⏳ 待检查 (Pending),⚠️ 需人工确认,可能是芯片 (Expression profiling by array)

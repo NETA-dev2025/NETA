@@ -1,0 +1,36 @@
+# R and RStudio files
+.Rhistory
+.RData
+.Rproj.user
+*.Rproj
+
+# Log files
+*.log
+nohup.out
+
+# Temporary files
+*.tmp
+*~
+.DS_Store
+
+# System files
+Thumbs.db
+desktop.ini
+
+# Large data files (optional - keep if you want to include data)
+# data/raw/geo/expression/*.rds
+# data/raw/tcga/*.rds
+
+# Shiny app specific
+rsconnect/
+shinyapps/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Package files
+*.zip
+*.tar.gz

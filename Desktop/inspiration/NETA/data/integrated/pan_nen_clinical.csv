@@ -1,0 +1,99 @@
+atlas_id,sample_id,study_id,data_source,organ,subtype,grade,sample_type,annotation_confidence
+NETA_000001,GSE100183,GSE100183,GEO,Skin,Merkel Cell,Unknown,Cell_Line,Medium
+NETA_000002,GSE102246,GSE102246,GEO,Lung,Atypical Carcinoid,Unknown,Cell_Line,Medium
+NETA_000004,GSE117988,GSE117988,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000005,GSE118014,GSE118014,GEO,Pancreas,PanNET,Unknown,Primary_Tumor,Medium
+NETA_000006,GSE118056,GSE118056,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000007,GSE118131,GSE118131,GEO,Lung,GI NET,Unknown,Primary_Tumor,Medium
+NETA_000009,GSE124857,GSE124857,GEO,Skin,Merkel Cell,Unknown,Cell_Line,Medium
+NETA_000010,GSE124861,GSE124861,GEO,Skin,Merkel Cell,Unknown,Cell_Line,Medium
+NETA_000011,GSE124864,GSE124864,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000016,GSE130346,GSE130346,GEO,Skin,Merkel Cell,Unknown,Cell_Line,Medium
+NETA_000026,GSE141119,GSE141119,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000028,GSE141832,GSE141832,GEO,Skin,Atypical Carcinoid,Unknown,Cell_Line,Medium
+NETA_000030,GSE147815,GSE147815,GEO,Skin,Merkel Cell,G2,Cell_Line,High
+NETA_000031,GSE147816,GSE147816,GEO,Skin,Merkel Cell,G2,Cell_Line,High
+NETA_000032,GSE149035,GSE149035,GEO,Lung,SCLC,G3,Cell_Line,High
+NETA_000034,GSE150766,GSE150766,GEO,Lung,SCLC,G3,Cell_Line,High
+NETA_000037,GSE154548,GSE154548,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000039,GSE154872,GSE154872,GEO,Lung,GI NET,Unknown,Cell_Line,Medium
+NETA_000040,GSE154938,GSE154938,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000041,GSE156289,GSE156289,GEO,Lung,SCLC,G3,Primary_Tumor,High
+NETA_000043,GSE157601,GSE157601,GEO,Lung,SCLC,G3,Primary_Tumor,High
+NETA_000045,GSE160870,GSE160870,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000046,GSE162708,GSE162708,GEO,Pancreas,PanNET,Unknown,Primary_Tumor,Medium
+NETA_000051,GSE176466,GSE176466,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000052,GSE176551,GSE176551,GEO,Lung,NEC,Unknown,Primary_Tumor,Medium
+NETA_000053,GSE177522,GSE177522,GEO,GI Tract,GI NET,Unknown,Primary_Tumor,Medium
+NETA_000054,GSE178398,GSE178398,GEO,Pancreas,PanNET,Unknown,Primary_Tumor,Medium
+NETA_000062,GSE186896,GSE186896,GEO,Skin,Merkel Cell,Unknown,Cell_Line,Medium
+NETA_000064,GSE188391,GSE188391,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000065,GSE189054,GSE189054,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000067,GSE196303,GSE196303,GEO,Lung,GI NET,Unknown,Primary_Tumor,Medium
+NETA_000074,GSE201460,GSE201460,GEO,Lung,SCLC,Unknown,Primary_Tumor,Medium
+NETA_000084,GSE210808,GSE210808,GEO,Adrenal,Pheochromocytoma,Unknown,Unknown,Medium
+NETA_000092,GSE213504,GSE213504,GEO,Pancreas,PanNET,G3,Cell_Line,High
+NETA_000094,GSE214946,GSE214946,GEO,Skin,Merkel Cell,Unknown,Cell_Line,Medium
+NETA_000095,GSE214947,GSE214947,GEO,Skin,Merkel Cell,Unknown,Cell_Line,Medium
+NETA_000097,GSE216055,GSE216055,GEO,Lung,SCLC,G3,Primary_Tumor,High
+NETA_000098,GSE216069,GSE216069,GEO,Lung,SCLC,G3,Primary_Tumor,High
+NETA_000102,GSE217206,GSE217206,GEO,Adrenal,Pheochromocytoma,Unknown,Unknown,Medium
+NETA_000116,GSE223275,GSE223275,GEO,Skin,Merkel Cell,Unknown,Cell_Line,Medium
+NETA_000117,GSE223372,GSE223372,GEO,Lung,SCLC,G3,Cell_Line,High
+NETA_000118,GSE224099,GSE224099,GEO,Lung,SCLC,G3,Cell_Line,High
+NETA_000121,GSE226438,GSE226438,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000127,GSE229019,GSE229019,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000128,GSE229701,GSE229701,GEO,Skin,Merkel Cell,Unknown,Cell_Line,Medium
+NETA_000133,GSE230489,GSE230489,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000139,GSE232528,GSE232528,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000142,GSE233447,GSE233447,GEO,Pancreas,NEC,G3,Cell_Line,High
+NETA_000148,GSE234446,GSE234446,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000150,GSE235092,GSE235092,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000152,GSE236327,GSE236327,GEO,Biliary Tract,Biliary NEC,High Grade,Cell_Line,High
+NETA_000156,GSE236917,GSE236917,GEO,Adrenal,Pheochromocytoma,Unknown,Normal,Medium
+NETA_000157,GSE236958,GSE236958,GEO,Biliary Tract,Biliary NEC,High Grade,Cell_Line,High
+NETA_000170,GSE243238,GSE243238,GEO,Lung,SCLC,G3,Primary_Tumor,High
+NETA_000183,GSE246457,GSE246457,GEO,Pancreas,Atypical Carcinoid,Unknown,Cell_Line,Medium
+NETA_000185,GSE246690,GSE246690,GEO,Lung,SCLC,Unknown,Primary_Tumor,Medium
+NETA_000188,GSE247574,GSE247574,GEO,Lung,Atypical Carcinoid,Unknown,Cell_Line,Medium
+NETA_000190,GSE248660,GSE248660,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000196,GSE249888,GSE249888,GEO,Prostate,Atypical Carcinoid,Unknown,Primary_Tumor,Medium
+NETA_000207,GSE253795,GSE253795,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000210,GSE254170,GSE254170,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000216,GSE255546,GSE255546,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000220,GSE256136,GSE256136,GEO,Pancreas,PanNET,Unknown,Primary_Tumor,Medium
+NETA_000228,GSE262624,GSE262624,GEO,Lung,SCLC,G3,Primary_Tumor,High
+NETA_000229,GSE262661,GSE262661,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000235,GSE267209,GSE267209,GEO,Pancreas,Atypical Carcinoid,Unknown,Primary_Tumor,Medium
+NETA_000241,GSE269942,GSE269942,GEO,Lung,SCLC,G3,Cell_Line,High
+NETA_000242,GSE270740,GSE270740,GEO,Skin,Atypical Carcinoid,Unknown,Cell_Line,Medium
+NETA_000243,GSE270741,GSE270741,GEO,Skin,Atypical Carcinoid,Unknown,Cell_Line,Medium
+NETA_000245,GSE271422,GSE271422,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000246,GSE273023,GSE273023,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000249,GSE273479,GSE273479,GEO,Skin,Merkel Cell,Unknown,Cell_Line,Medium
+NETA_000253,GSE274975,GSE274975,GEO,Lung,SCLC,G3,Primary_Tumor,High
+NETA_000263,GSE278335,GSE278335,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000266,GSE279805,GSE279805,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000267,GSE280271,GSE280271,GEO,Biliary Tract,Biliary NEC,High Grade,Cell_Line,High
+NETA_000268,GSE280449,GSE280449,GEO,Biliary Tract,Biliary NEC,High Grade,Cell_Line,High
+NETA_000270,GSE280924,GSE280924,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000271,GSE281039,GSE281039,GEO,Pancreas,PanNET,Unknown,Primary_Tumor,Medium
+NETA_000272,GSE281260,GSE281260,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000273,GSE281857,GSE281857,GEO,Skin,NEC,G3,Cell_Line,High
+NETA_000275,GSE282219,GSE282219,GEO,Pancreas,GI NET,Unknown,Primary_Tumor,Medium
+NETA_000285,GSE283855,GSE283855,GEO,Biliary Tract,Biliary NEC,High Grade,Cell_Line,High
+NETA_000287,GSE284318,GSE284318,GEO,Thyroid,Atypical Carcinoid,Unknown,Cell_Line,Medium
+NETA_000288,GSE284467,GSE284467,GEO,Skin,Atypical Carcinoid,G2,Primary_Tumor,High
+NETA_000289,GSE284573,GSE284573,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000291,GSE284793,GSE284793,GEO,Skin,Merkel Cell,Unknown,Cell_Line,Medium
+NETA_000302,GSE290105,GSE290105,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000306,GSE290569,GSE290569,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000321,GSE298236,GSE298236,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000322,GSE300710,GSE300710,GEO,Pancreas,Atypical Carcinoid,Unknown,Cell_Line,Medium
+NETA_000323,GSE301503,GSE301503,GEO,Lung,GI NET,Unknown,Primary_Tumor,Medium
+NETA_000329,GSE305457,GSE305457,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000342,GSE69393,GSE69393,GEO,Lung,SCLC,G3,Cell_Line,High
+NETA_000343,GSE69876,GSE69876,GEO,Skin,Merkel Cell,Unknown,Cell_Line,Medium
+NETA_000344,GSE78220,GSE78220,GEO,Pancreas,Pancreatic NEC,G3,Cell_Line,High
+NETA_000345,GSE79657,GSE79657,GEO,Skin,Merkel Cell,Unknown,Primary_Tumor,Medium
+NETA_000346,GSE79968,GSE79968,GEO,Skin,Merkel Cell,Unknown,Cell_Line,Medium
